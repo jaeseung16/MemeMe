@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="x8v-8m-IM3">
+                                    <navigationItem title="MemeMe" id="x8v-8m-IM3">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="m8K-4S-T5c"/>
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="U4L-3w-dmT"/>
                                     </navigationItem>
@@ -40,6 +40,18 @@
                                     <barButtonItem title="Album" id="QOR-YC-Ags"/>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grN-wg-lZZ">
+                                <rect key="frame" x="139" y="99" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-jn-qgy">
+                                <rect key="frame" x="139" y="563" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-B5-vdF">
                                 <rect key="frame" x="16" y="72" width="343" height="551"/>
                             </imageView>
@@ -48,8 +60,12 @@
                         <constraints>
                             <constraint firstItem="eoo-B5-vdF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2y8-zW-8aI"/>
                             <constraint firstItem="eoo-B5-vdF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="52" id="7iB-OB-fKX"/>
+                            <constraint firstItem="grN-wg-lZZ" firstAttribute="centerX" secondItem="eoo-B5-vdF" secondAttribute="centerX" id="K17-Je-7Nj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eoo-B5-vdF" secondAttribute="bottom" constant="44" id="Q54-QO-TZi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eoo-B5-vdF" secondAttribute="trailing" id="g2e-gD-U7t"/>
+                            <constraint firstItem="eoo-B5-vdF" firstAttribute="top" secondItem="grN-wg-lZZ" secondAttribute="bottom" constant="-57" id="tTk-8L-9Lg"/>
+                            <constraint firstItem="0A8-jn-qgy" firstAttribute="centerX" secondItem="eoo-B5-vdF" secondAttribute="centerX" id="vYD-9w-YnN"/>
+                            <constraint firstItem="0A8-jn-qgy" firstAttribute="top" secondItem="eoo-B5-vdF" secondAttribute="bottom" constant="-60" id="xhK-WV-jza"/>
                         </constraints>
                     </view>
                 </viewController>
