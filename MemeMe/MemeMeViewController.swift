@@ -47,10 +47,17 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     // MARK: Actions
     
+    @IBAction func pickAnImageFromCamera(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
+    }
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
 }

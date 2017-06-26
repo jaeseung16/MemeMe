@@ -34,7 +34,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-XT-2pC">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="camera" id="FPG-AU-BWI"/>
+                                    <barButtonItem systemItem="camera" id="FPG-AU-BWI">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="Smc-AB-Rd6"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Album" id="QOR-YC-Ags">
                                         <connections>
                                             <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="qac-Q2-oYG"/>
