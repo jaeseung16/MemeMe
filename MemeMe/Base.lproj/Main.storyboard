@@ -37,17 +37,21 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem systemItem="camera" id="FPG-AU-BWI"/>
-                                    <barButtonItem title="Album" id="QOR-YC-Ags"/>
+                                    <barButtonItem title="Album" id="QOR-YC-Ags">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="qac-Q2-oYG"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grN-wg-lZZ">
-                                <rect key="frame" x="139" y="99" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grN-wg-lZZ">
+                                <rect key="frame" x="163" y="99" width="49" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-jn-qgy">
-                                <rect key="frame" x="139" y="563" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-jn-qgy">
+                                <rect key="frame" x="147" y="563" width="81" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -69,7 +73,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="albumButton" destination="QOR-YC-Ags" id="53I-AE-7Na"/>
                         <outlet property="bottomTextField" destination="0A8-jn-qgy" id="0oL-JB-SVy"/>
+                        <outlet property="cameraButton" destination="FPG-AU-BWI" id="Edy-ww-9RK"/>
+                        <outlet property="imagePickerView" destination="eoo-B5-vdF" id="P59-Wu-PMI"/>
                         <outlet property="topTextField" destination="grN-wg-lZZ" id="wgp-el-VKD"/>
                     </connections>
                 </viewController>
