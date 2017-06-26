@@ -59,12 +59,14 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
 
 extension MemeMeViewController {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
+            picker.dismiss(animated: true, completion: nil)
         }
+
     }
 }
