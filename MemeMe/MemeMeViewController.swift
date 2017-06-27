@@ -43,7 +43,17 @@ class MemeMeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        subscribeToKeyboardNotifications()
+        
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribeToKeyboardNotifications()
+        
+        super.viewWillDisappear(animated)
     }
 
     // MARK: Actions
