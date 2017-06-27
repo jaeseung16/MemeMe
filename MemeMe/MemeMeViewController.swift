@@ -40,6 +40,9 @@ class MemeMeViewController: UIViewController {
         topTextField.textAlignment = .center
         bottomTextField.textAlignment = .center
         
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +76,7 @@ class MemeMeViewController: UIViewController {
     }
 }
 
-// MARK: ImagePickerControllerDelegate
+// MARK: UIImagePickerControllerDelegate
 extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -86,6 +89,14 @@ extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationCon
             picker.dismiss(animated: true, completion: nil)
         }
 
+    }
+}
+
+// MARK: UITextFieldDelegate
+extension MemeMeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
@@ -104,16 +115,16 @@ extension MemeMeViewController {
     }
     
     func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        self.view.frame.origin.y -= getKeyboardHeight(notification)
     }
     
     func keyboardWillHide(_ notification: Notification) {
-        view.frame.origin.y = 0
+        self.view.frame.origin.y = 0
     }
     
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
-        let userInfo = notification.userInfo!
-        let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         
         return keyboardSize.cgRectValue.height
     }
