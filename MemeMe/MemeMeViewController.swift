@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeMeViewController: UIViewController {
 
     // MARK: Outlets
     
@@ -39,6 +39,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         topTextField.textAlignment = .center
         bottomTextField.textAlignment = .center
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,9 +63,9 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
 }
 
-// MARK: Delegate methods
-
-extension MemeMeViewController {
+// MARK: ImagePickerControllerDelegate
+extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
@@ -76,4 +77,36 @@ extension MemeMeViewController {
         }
 
     }
+}
+
+// MARK: Methods related to Keyboard
+extension MemeMeViewController {
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func unsubscribeToKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(_ notification: Notification) {
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        view.frame.origin.y = 0
+    }
+    
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = notification.userInfo!
+        let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+        
+        return keyboardSize.cgRectValue.height
+    }
+    
+    
 }
