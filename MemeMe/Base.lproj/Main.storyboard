@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,41 +21,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yar-RW-oUo">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yar-RW-oUo">
                                 <rect key="frame" x="16" y="64" width="343" height="559"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-B5-vdF">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-B5-vdF">
                                         <rect key="frame" x="0.5" y="0.0" width="343" height="559"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grN-wg-lZZ">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grN-wg-lZZ">
                                         <rect key="frame" x="123" y="40" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-jn-qgy">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-jn-qgy">
                                         <rect key="frame" x="79.5" y="489" width="184" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="grN-wg-lZZ" firstAttribute="centerX" secondItem="Yar-RW-oUo" secondAttribute="centerX" id="LvM-i8-cvr"/>
-                                    <constraint firstItem="0A8-jn-qgy" firstAttribute="centerX" secondItem="Yar-RW-oUo" secondAttribute="centerX" id="UvQ-gG-qb6"/>
-                                    <constraint firstAttribute="bottom" secondItem="0A8-jn-qgy" secondAttribute="bottom" constant="40" id="ZVm-QI-spU"/>
-                                    <constraint firstItem="eoo-B5-vdF" firstAttribute="centerY" secondItem="Yar-RW-oUo" secondAttribute="centerY" id="ZeJ-dk-Yon"/>
-                                    <constraint firstItem="eoo-B5-vdF" firstAttribute="width" secondItem="Yar-RW-oUo" secondAttribute="width" id="bqa-Ga-UOd"/>
-                                    <constraint firstItem="grN-wg-lZZ" firstAttribute="top" secondItem="Yar-RW-oUo" secondAttribute="top" constant="40" id="co9-0l-qaG"/>
-                                    <constraint firstItem="eoo-B5-vdF" firstAttribute="centerX" secondItem="Yar-RW-oUo" secondAttribute="centerX" id="di7-ha-pKq"/>
-                                    <constraint firstItem="eoo-B5-vdF" firstAttribute="height" secondItem="Yar-RW-oUo" secondAttribute="height" id="q95-UP-Q7d"/>
-                                </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-XT-2pC">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-XT-2pC">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="D6q-3g-hFo"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bwi-oc-oG7"/>
                                     <barButtonItem systemItem="camera" id="FPG-AU-BWI">
@@ -73,11 +64,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="AgD-6K-Tlo"/>
                                 </items>
                             </toolbar>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbN-1u-DCq">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbN-1u-DCq">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Ce8-rt-TQ1"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="MemeMe" id="x8v-8m-IM3">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="m8K-4S-T5c"/>
@@ -87,19 +76,6 @@
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Yar-RW-oUo" secondAttribute="trailing" id="5MG-0n-Hfn"/>
-                            <constraint firstItem="7xO-XT-2pC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="8vV-aH-jDJ"/>
-                            <constraint firstItem="cbN-1u-DCq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EWS-Rp-Q7s"/>
-                            <constraint firstItem="Yar-RW-oUo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="IXB-bc-ous"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7xO-XT-2pC" secondAttribute="bottom" id="KLR-As-d6a"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Yar-RW-oUo" secondAttribute="leading" id="NbF-zg-VIh"/>
-                            <constraint firstItem="Yar-RW-oUo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QNc-9F-Uw0"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yar-RW-oUo" secondAttribute="bottom" constant="44" id="Zib-S6-GNw"/>
-                            <constraint firstItem="7xO-XT-2pC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bNk-QS-aac"/>
-                            <constraint firstItem="cbN-1u-DCq" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="quW-22-KDA"/>
-                            <constraint firstItem="cbN-1u-DCq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="r1g-pc-f6V"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="albumButton" destination="QOR-YC-Ags" id="53I-AE-7Na"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class MemeMeViewController: UIViewController {
 
@@ -109,19 +110,18 @@ extension MemeMeViewController {
     }
     
     func keyboardWillShow(_ notification: Notification) {
-        self.contentView.frame.origin.y -= getKeyboardHeight(notification)
+        self.view.frame.origin.y -= getKeyboardHeight(notification)
     }
     
     func keyboardWillHide(_ notification: Notification) {
-        self.contentView.frame.origin.y = 0
+        self.view.frame.origin.y += getKeyboardHeight(notification)
     }
     
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        
+
         return keyboardSize.cgRectValue.height
     }
-    
     
 }
