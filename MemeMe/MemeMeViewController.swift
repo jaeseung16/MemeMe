@@ -17,6 +17,7 @@ class MemeMeViewController: UIViewController {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var albumButton: UIBarButtonItem!
     
@@ -115,11 +116,11 @@ extension MemeMeViewController {
     }
     
     func keyboardWillShow(_ notification: Notification) {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        self.contentView.frame.origin.y -= getKeyboardHeight(notification)
     }
     
     func keyboardWillHide(_ notification: Notification) {
-        self.view.frame.origin.y = 0
+        self.contentView.frame.origin.y = 0
     }
     
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
