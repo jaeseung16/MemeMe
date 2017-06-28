@@ -28,6 +28,7 @@ class MemeMeViewController: UIViewController {
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName: Float(2.0)]
     
+    let memeTextFieldDelegate = MemeTextFieldDelegate()
     
     // MARK: Methods
     
@@ -41,8 +42,8 @@ class MemeMeViewController: UIViewController {
         topTextField.textAlignment = .center
         bottomTextField.textAlignment = .center
         
-        topTextField.delegate = self
-        bottomTextField.delegate = self
+        self.topTextField.delegate = self.memeTextFieldDelegate
+        self.bottomTextField.delegate = self.memeTextFieldDelegate
         
     }
 
@@ -90,14 +91,6 @@ extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationCon
             picker.dismiss(animated: true, completion: nil)
         }
 
-    }
-}
-
-// MARK: UITextFieldDelegate
-extension MemeMeViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
 
