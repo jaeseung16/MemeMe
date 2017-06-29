@@ -22,24 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-XT-2pC">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="bwi-oc-oG7"/>
-                                    <barButtonItem systemItem="camera" id="FPG-AU-BWI">
-                                        <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="Smc-AB-Rd6"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5N0-lL-y32"/>
-                                    <barButtonItem title="Album" id="QOR-YC-Ags">
-                                        <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="qac-Q2-oYG"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AgD-6K-Tlo"/>
-                                </items>
-                            </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-B5-vdF">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
@@ -64,12 +46,30 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-XT-2pC">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="bwi-oc-oG7"/>
+                                    <barButtonItem systemItem="camera" id="FPG-AU-BWI">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="Smc-AB-Rd6"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5N0-lL-y32"/>
+                                    <barButtonItem title="Album" id="QOR-YC-Ags">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="qac-Q2-oYG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AgD-6K-Tlo"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0A8-jn-qgy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="3pa-7Q-Djy"/>
                             <constraint firstItem="cbN-1u-DCq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="9zM-Bz-0gN"/>
-                            <constraint firstItem="eoo-B5-vdF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="HaC-lB-IFK"/>
+                            <constraint firstItem="eoo-B5-vdF" firstAttribute="top" secondItem="cbN-1u-DCq" secondAttribute="bottom" id="JYu-aQ-7sc"/>
                             <constraint firstItem="grN-wg-lZZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="Nmv-vv-eto"/>
                             <constraint firstAttribute="trailing" secondItem="7xO-XT-2pC" secondAttribute="trailing" id="TRI-Gn-8bD"/>
                             <constraint firstAttribute="trailing" secondItem="cbN-1u-DCq" secondAttribute="trailing" id="XdJ-kG-9vq"/>

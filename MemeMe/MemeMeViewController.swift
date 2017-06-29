@@ -109,13 +109,13 @@ extension MemeMeViewController {
     }
     
     func keyboardWillShow(_ notification: Notification) {
-        if bottomTextField.isEditing == true {
+        if bottomTextField.isFirstResponder == true {
             self.view.frame.origin.y = 0 - getKeyboardHeight(notification)
         }
     }
     
     func keyboardWillHide(_ notification: Notification) {
-        if bottomTextField.isEditing == true {
+        if bottomTextField.isFirstResponder == true {
             self.view.frame.origin.y = 0
         }
     }
@@ -128,3 +128,5 @@ extension MemeMeViewController {
     }
     
 }
+
+// MARK: Meme object
