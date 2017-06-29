@@ -48,6 +48,8 @@ class MemeMeViewController: UIViewController {
         self.topTextField.delegate = self.memeTextFieldDelegate
         self.bottomTextField.delegate = self.memeTextFieldDelegate
         
+        toggleTextField()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +64,11 @@ class MemeMeViewController: UIViewController {
         unsubscribeToKeyboardNotifications()
         
         super.viewWillDisappear(animated)
+    }
+    
+    func toggleTextField() {
+        topTextField.isEnabled = !topTextField.isEnabled
+        bottomTextField.isEnabled = !bottomTextField.isEnabled
     }
 
 
@@ -85,7 +92,7 @@ class MemeMeViewController: UIViewController {
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         imagePickerView.image = nil
-        
+        toggleTextField()
     }
 }
 
@@ -100,6 +107,7 @@ extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationCon
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
             picker.dismiss(animated: true, completion: nil)
+            toggleTextField()
         }
 
     }
