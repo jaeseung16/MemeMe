@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,20 +49,17 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="AgD-6K-Tlo"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-B5-vdF">
-                                <rect key="frame" x="16" y="44" width="343" height="579"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-B5-vdF">
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grN-wg-lZZ">
-                                <rect key="frame" x="139" y="318" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-jn-qgy">
+                                <rect key="frame" x="96" y="537" width="183" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-jn-qgy">
-                                <rect key="frame" x="95" y="318" width="184" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grN-wg-lZZ">
+                                <rect key="frame" x="139" y="120" width="97" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -69,12 +67,22 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0A8-jn-qgy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="3pa-7Q-Djy"/>
                             <constraint firstItem="cbN-1u-DCq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="9zM-Bz-0gN"/>
+                            <constraint firstItem="eoo-B5-vdF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="HaC-lB-IFK"/>
+                            <constraint firstItem="grN-wg-lZZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="Nmv-vv-eto"/>
                             <constraint firstAttribute="trailing" secondItem="7xO-XT-2pC" secondAttribute="trailing" id="TRI-Gn-8bD"/>
                             <constraint firstAttribute="trailing" secondItem="cbN-1u-DCq" secondAttribute="trailing" id="XdJ-kG-9vq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7xO-XT-2pC" secondAttribute="bottom" id="Z4y-sK-Mbr"/>
                             <constraint firstItem="cbN-1u-DCq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aTQ-oH-0Ck"/>
+                            <constraint firstItem="eoo-B5-vdF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="b6e-Zz-93Q"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eoo-B5-vdF" secondAttribute="bottom" constant="44" id="fvH-gD-yqL"/>
                             <constraint firstItem="7xO-XT-2pC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hD6-ET-8a5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="grN-wg-lZZ" secondAttribute="trailing" constant="123" id="iew-0N-fgy"/>
+                            <constraint firstItem="grN-wg-lZZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="123" id="ivf-R6-8Nv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eoo-B5-vdF" secondAttribute="trailing" constant="-16" id="nxA-H3-jSk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0A8-jn-qgy" secondAttribute="trailing" constant="80" id="rAt-Sy-qH6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0A8-jn-qgy" secondAttribute="bottom" constant="100" id="tpl-dP-o4B"/>
                         </constraints>
                     </view>
                     <connections>
