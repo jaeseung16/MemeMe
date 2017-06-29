@@ -21,6 +21,9 @@ class MemeMeViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var albumButton: UIBarButtonItem!
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var toolBar: UIToolbar!
+    
     // MARK: Properties
     let memeTextAttribute: [String: Any] = [
         NSStrokeColorAttributeName: UIColor.black,
@@ -130,3 +133,24 @@ extension MemeMeViewController {
 }
 
 // MARK: Meme object
+
+extension MemeMeViewController {
+    func generateMemedImage() -> UIImage {
+        
+        // TODO: Hide toolbar and navbar
+        toolBar.isHidden = true
+        navigationBar.isHidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // TODO: Show toolbar and navbar
+        toolBar.isHidden = false
+        navigationBar.isHidden = false
+        
+        return memedImage
+    }
+}
