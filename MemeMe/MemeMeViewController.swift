@@ -64,6 +64,7 @@ class MemeMeViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
 
+
     // MARK: Actions
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
@@ -78,6 +79,13 @@ class MemeMeViewController: UIViewController {
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func reset(_ sender:Any) {
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imagePickerView.image = nil
+        
     }
 }
 

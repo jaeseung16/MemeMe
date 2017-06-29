@@ -43,7 +43,11 @@
                                 <items>
                                     <navigationItem title="MemeMe" id="x8v-8m-IM3">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="m8K-4S-T5c"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="U4L-3w-dmT"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="U4L-3w-dmT">
+                                            <connections>
+                                                <action selector="reset:" destination="BYZ-38-t0r" id="hUj-pF-pnf"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
