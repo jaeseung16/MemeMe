@@ -24,6 +24,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eoo-B5-vdF">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grN-wg-lZZ">
                                 <rect key="frame" x="139" y="120" width="97" height="30"/>
@@ -65,17 +66,16 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0A8-jn-qgy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="3pa-7Q-Djy"/>
                             <constraint firstItem="cbN-1u-DCq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="9zM-Bz-0gN"/>
-                            <constraint firstItem="eoo-B5-vdF" firstAttribute="top" secondItem="cbN-1u-DCq" secondAttribute="bottom" id="JYu-aQ-7sc"/>
                             <constraint firstItem="grN-wg-lZZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="Nmv-vv-eto"/>
                             <constraint firstAttribute="trailing" secondItem="7xO-XT-2pC" secondAttribute="trailing" id="TRI-Gn-8bD"/>
                             <constraint firstAttribute="trailing" secondItem="cbN-1u-DCq" secondAttribute="trailing" id="XdJ-kG-9vq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7xO-XT-2pC" secondAttribute="bottom" id="Z4y-sK-Mbr"/>
                             <constraint firstItem="cbN-1u-DCq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aTQ-oH-0Ck"/>
                             <constraint firstItem="eoo-B5-vdF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="b6e-Zz-93Q"/>
+                            <constraint firstItem="eoo-B5-vdF" firstAttribute="top" secondItem="cbN-1u-DCq" secondAttribute="bottom" id="f7y-r9-ymZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eoo-B5-vdF" secondAttribute="bottom" constant="44" id="fvH-gD-yqL"/>
                             <constraint firstItem="7xO-XT-2pC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hD6-ET-8a5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="grN-wg-lZZ" secondAttribute="trailing" constant="123" id="iew-0N-fgy"/>
@@ -90,6 +90,8 @@
                         <outlet property="bottomTextField" destination="0A8-jn-qgy" id="0oL-JB-SVy"/>
                         <outlet property="cameraButton" destination="FPG-AU-BWI" id="Edy-ww-9RK"/>
                         <outlet property="imagePickerView" destination="eoo-B5-vdF" id="P59-Wu-PMI"/>
+                        <outlet property="navigationBar" destination="cbN-1u-DCq" id="bNk-xt-LZo"/>
+                        <outlet property="toolBar" destination="7xO-XT-2pC" id="6hf-jq-K4C"/>
                         <outlet property="topTextField" destination="grN-wg-lZZ" id="wgp-el-VKD"/>
                     </connections>
                 </viewController>
