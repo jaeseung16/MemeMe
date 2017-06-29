@@ -110,13 +110,13 @@ extension MemeMeViewController {
     
     func keyboardWillShow(_ notification: Notification) {
         if bottomTextField.isEditing == true {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            self.view.frame.origin.y = 0 - getKeyboardHeight(notification)
         }
     }
     
     func keyboardWillHide(_ notification: Notification) {
         if bottomTextField.isEditing == true {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            self.view.frame.origin.y = 0
         }
     }
     
