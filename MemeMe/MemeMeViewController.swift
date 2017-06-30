@@ -94,6 +94,16 @@ class MemeMeViewController: UIViewController {
         imagePickerView.image = nil
         toggleTextField()
     }
+    
+    @IBAction func save() {
+        // Create the meme
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        
+        let activityController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
+        
+        present(activityController, animated: true, completion: nil)
+        print("\(meme)")
+    }
 }
 
 // MARK: UIImagePickerControllerDelegate

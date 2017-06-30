@@ -42,7 +42,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="MemeMe" id="x8v-8m-IM3">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="m8K-4S-T5c"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="m8K-4S-T5c">
+                                            <connections>
+                                                <action selector="save" destination="BYZ-38-t0r" id="fi9-PB-wjx"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="U4L-3w-dmT">
                                             <connections>
                                                 <action selector="reset:" destination="BYZ-38-t0r" id="hUj-pF-pnf"/>
