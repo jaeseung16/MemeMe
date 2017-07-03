@@ -76,7 +76,6 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0A8-jn-qgy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="3pa-7Q-Djy"/>
                             <constraint firstItem="cbN-1u-DCq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="9zM-Bz-0gN"/>
@@ -97,6 +96,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityButton" destination="m8K-4S-T5c" id="Ea3-j7-6tv"/>
                         <outlet property="albumButton" destination="QOR-YC-Ags" id="53I-AE-7Na"/>
                         <outlet property="bottomTextField" destination="0A8-jn-qgy" id="0oL-JB-SVy"/>
                         <outlet property="cameraButton" destination="FPG-AU-BWI" id="Edy-ww-9RK"/>

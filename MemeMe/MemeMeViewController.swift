@@ -20,6 +20,7 @@ class MemeMeViewController: UIViewController {
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var activityButton: UIBarButtonItem!
     
     // MARK: Properties
     
@@ -45,7 +46,7 @@ class MemeMeViewController: UIViewController {
         self.topTextField.delegate = self.memeTextFieldDelegate
         self.bottomTextField.delegate = self.memeTextFieldDelegate
         
-        // Disable the textFields at the beginning
+        // Disable the textFields and activityButton at the beginning
         toggleTextField()
         
     }
@@ -67,6 +68,7 @@ class MemeMeViewController: UIViewController {
     func toggleTextField() {
         topTextField.isEnabled = !topTextField.isEnabled
         bottomTextField.isEnabled = !bottomTextField.isEnabled
+        activityButton.isEnabled = !activityButton.isEnabled
     }
     
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType) {
