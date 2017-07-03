@@ -75,6 +75,7 @@ class MemeMeViewController: UIViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
 
