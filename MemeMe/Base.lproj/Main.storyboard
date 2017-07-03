@@ -27,14 +27,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grN-wg-lZZ">
-                                <rect key="frame" x="16" y="120" width="343" height="48"/>
+                                <rect key="frame" x="16" y="84" width="343" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0A8-jn-qgy">
-                                <rect key="frame" x="16" y="519" width="343" height="48"/>
+                                <rect key="frame" x="16" y="559" width="343" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -46,7 +46,7 @@
                                     <navigationItem title="MemeMe" id="x8v-8m-IM3">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="m8K-4S-T5c">
                                             <connections>
-                                                <action selector="save" destination="BYZ-38-t0r" id="fi9-PB-wjx"/>
+                                                <action selector="presentActivityController" destination="BYZ-38-t0r" id="sot-v0-2Dp"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="U4L-3w-dmT">
@@ -79,12 +79,13 @@
                         <constraints>
                             <constraint firstItem="0A8-jn-qgy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="3pa-7Q-Djy"/>
                             <constraint firstItem="cbN-1u-DCq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="9zM-Bz-0gN"/>
-                            <constraint firstItem="grN-wg-lZZ" firstAttribute="top" secondItem="cbN-1u-DCq" secondAttribute="bottom" constant="56" id="PvV-0l-MwT"/>
+                            <constraint firstItem="grN-wg-lZZ" firstAttribute="top" secondItem="cbN-1u-DCq" secondAttribute="bottom" constant="20" id="PvV-0l-MwT"/>
                             <constraint firstAttribute="trailing" secondItem="7xO-XT-2pC" secondAttribute="trailing" id="TRI-Gn-8bD"/>
                             <constraint firstAttribute="trailing" secondItem="cbN-1u-DCq" secondAttribute="trailing" id="XdJ-kG-9vq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7xO-XT-2pC" secondAttribute="bottom" id="Z4y-sK-Mbr"/>
                             <constraint firstItem="cbN-1u-DCq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aTQ-oH-0Ck"/>
                             <constraint firstItem="eoo-B5-vdF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="b6e-Zz-93Q"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0A8-jn-qgy" secondAttribute="bottom" constant="60" id="bSe-NZ-0p3"/>
                             <constraint firstItem="eoo-B5-vdF" firstAttribute="top" secondItem="cbN-1u-DCq" secondAttribute="bottom" id="f7y-r9-ymZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eoo-B5-vdF" secondAttribute="bottom" constant="44" id="fvH-gD-yqL"/>
                             <constraint firstItem="7xO-XT-2pC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hD6-ET-8a5"/>
@@ -92,7 +93,6 @@
                             <constraint firstItem="grN-wg-lZZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ivf-R6-8Nv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eoo-B5-vdF" secondAttribute="trailing" constant="-16" id="nxA-H3-jSk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0A8-jn-qgy" secondAttribute="trailing" id="rAt-Sy-qH6"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0A8-jn-qgy" secondAttribute="bottom" constant="100" id="tpl-dP-o4B"/>
                         </constraints>
                     </view>
                     <connections>

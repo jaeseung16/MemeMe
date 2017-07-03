@@ -93,15 +93,18 @@ class MemeMeViewController: UIViewController {
         toggleTextField()
     }
     
-    @IBAction func save() {
+    @IBAction func presentActivityController() {
         // Create the meme
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
         
         let activityController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
         
         present(activityController, animated: true, completion: reset(_:))
+        
+        UIImageWriteToSavedPhotosAlbum(meme.memedImage, nil, nil, nil)
 
     }
+    
 }
 
 // MARK: UIImagePickerControllerDelegate
@@ -162,8 +165,7 @@ extension MemeMeViewController {
 
 extension MemeMeViewController {
     func generateMemedImage() -> UIImage {
-        
-        // TODO: Hide toolbar and navbar
+
         toolBar.isHidden = true
         navigationBar.isHidden = true
         
@@ -173,7 +175,6 @@ extension MemeMeViewController {
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        // TODO: Show toolbar and navbar
         toolBar.isHidden = false
         navigationBar.isHidden = false
         
