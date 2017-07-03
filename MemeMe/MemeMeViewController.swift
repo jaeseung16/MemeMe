@@ -27,7 +27,7 @@ class MemeMeViewController: UIViewController {
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName: Float(2.0)]
+        NSStrokeWidthAttributeName: Float(-2.0)]
     
     let memeTextFieldDelegate = MemeTextFieldDelegate()
     
