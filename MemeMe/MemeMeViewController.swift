@@ -167,13 +167,19 @@ extension MemeMeViewController {
 
 extension MemeMeViewController {
     func generateMemedImage() -> UIImage {
+        
+        // Image size to capture
+        let actualImageSize = imageSize()
 
+        // Shift the frame of the view for capture
+        let frameForCapture = shiftedFrame(for: actualImageSize)
+        
         toolBar.isHidden = true
         navigationBar.isHidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(actualImageSize)
+        view.drawHierarchy(in: frameForCapture, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
@@ -181,5 +187,25 @@ extension MemeMeViewController {
         navigationBar.isHidden = false
         
         return memedImage
+
+    }
+    
+    func imageSize() -> CGSize {
+        let imageSize = imagePickerView.image!.size
+        let ratioWidth = imagePickerView.frame.size.width / imageSize.width
+        let ratioHeight = imagePickerView.frame.size.height / imageSize.height
+        let scale = ratioWidth < ratioHeight ? ratioWidth : ratioHeight
+        let actualImageSize = CGSize(width: imageSize.width * scale, height: imageSize.height * scale)
+        
+        return actualImageSize
+    }
+    
+    func shiftedFrame(for imageSize: CGSize) -> CGRect {
+        let xOrigin = self.view.frame.origin.x - (self.view.frame.size.width - imageSize.width) * 0.5
+        let yOrigin = self.view.frame.origin.y - imagePickerView.frame.origin.y - (imagePickerView.frame.size.height - imageSize.height) * 0.5
+        let shiftOrigin = CGPoint(x: xOrigin, y: yOrigin)
+        let shiftedFrame = CGRect(origin: shiftOrigin, size: self.view.frame.size)
+        
+        return shiftedFrame
     }
 }
