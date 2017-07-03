@@ -15,16 +15,14 @@ class MemeMeViewController: UIViewController {
     
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    
     @IBOutlet weak var imagePickerView: UIImageView!
-    
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var albumButton: UIBarButtonItem!
-    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var toolBar: UIToolbar!
     
     // MARK: Properties
+    
     let memeTextAttribute: [String: Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
@@ -37,8 +35,7 @@ class MemeMeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+
         topTextField.defaultTextAttributes = memeTextAttribute
         bottomTextField.defaultTextAttributes = memeTextAttribute
         
@@ -48,6 +45,7 @@ class MemeMeViewController: UIViewController {
         self.topTextField.delegate = self.memeTextFieldDelegate
         self.bottomTextField.delegate = self.memeTextFieldDelegate
         
+        // Disable the textFields at the beginning
         toggleTextField()
         
     }
@@ -70,22 +68,22 @@ class MemeMeViewController: UIViewController {
         topTextField.isEnabled = !topTextField.isEnabled
         bottomTextField.isEnabled = !bottomTextField.isEnabled
     }
-
+    
+    func presentImagePicker(sourceType: UIImagePickerControllerSourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        present(imagePicker, animated: true, completion: nil)
+    }
 
     // MARK: Actions
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+        presentImagePicker(sourceType: .camera)
     }
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        presentImagePicker(sourceType: .photoLibrary)
     }
     
     @IBAction func reset(_ sender:Any) {
@@ -101,8 +99,8 @@ class MemeMeViewController: UIViewController {
         
         let activityController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
         
-        present(activityController, animated: true, completion: nil)
-        print("\(meme)")
+        present(activityController, animated: true, completion: reset(_:))
+
     }
 }
 
@@ -117,6 +115,8 @@ extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationCon
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
             picker.dismiss(animated: true, completion: nil)
+            
+            // Enable textFields
             toggleTextField()
         }
 
