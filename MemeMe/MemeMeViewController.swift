@@ -47,7 +47,7 @@ class MemeMeViewController: UIViewController {
         self.bottomTextField.delegate = self.memeTextFieldDelegate
         
         // Disable the textFields and activityButton at the beginning
-        toggleTextField()
+        memeNotReady()
         
     }
 
@@ -65,10 +65,16 @@ class MemeMeViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    func toggleTextField() {
-        topTextField.isEnabled = !topTextField.isEnabled
-        bottomTextField.isEnabled = !bottomTextField.isEnabled
-        activityButton.isEnabled = !activityButton.isEnabled
+    func memeNotReady() {
+        topTextField.isEnabled = false
+        bottomTextField.isEnabled = false
+        activityButton.isEnabled = false
+    }
+    
+    func memeReady() {
+        topTextField.isEnabled = true
+        bottomTextField.isEnabled = true
+        activityButton.isEnabled = true
     }
     
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType) {
@@ -93,7 +99,7 @@ class MemeMeViewController: UIViewController {
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         imagePickerView.image = nil
-        toggleTextField()
+        memeNotReady()
     }
     
     @IBAction func presentActivityController() {
@@ -115,15 +121,15 @@ extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationCon
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+        memeNotReady()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
             picker.dismiss(animated: true, completion: nil)
-            
-            // Enable textFields
-            toggleTextField()
+
+            memeReady()
         }
 
     }
