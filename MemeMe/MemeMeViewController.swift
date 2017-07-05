@@ -91,7 +91,7 @@ class MemeMeViewController: UIViewController {
         presentImagePicker(sourceType: .photoLibrary)
     }
     
-    @IBAction func reset(_ sender:Any) {
+    @IBAction func reset() {
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         imagePickerView.image = nil
@@ -104,29 +104,16 @@ class MemeMeViewController: UIViewController {
         
         let activityController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
         
-        present(activityController, animated: true, completion: reset(_:))
-        
-        UIImageWriteToSavedPhotosAlbum(meme.memedImage, nil, nil, nil)
-
-    }
-    
-}
-
-// MARK: UIImagePickerControllerDelegate
-extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imagePickerView.image = image
-            picker.dismiss(animated: true, completion: nil)
-            memeReady()
+        activityController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
+            guard completed else {
+                return
+            }
+            UIImageWriteToSavedPhotosAlbum(meme.memedImage, nil, nil, nil)
+            self.reset()
         }
-
+        
+        present(activityController, animated: true, completion: nil)
+        
     }
 
 }
