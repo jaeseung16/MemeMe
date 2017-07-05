@@ -33,17 +33,12 @@ class MemeMeViewController: UIViewController {
 //    let memeTextFieldDelegate = MemeTextFieldDelegate()
     
     var originalText: String?
+    var originalTextAttribute: [String: Any]?
     
     // MARK: Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        topTextField.defaultTextAttributes = memeTextAttribute
-        bottomTextField.defaultTextAttributes = memeTextAttribute
-        
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
         
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
@@ -143,12 +138,15 @@ extension MemeMeViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+
     }
     
     func unsubscribeToKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: nil)
     }
     
     func keyboardWillShow(_ notification: Notification) {
@@ -227,6 +225,8 @@ extension MemeMeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text == "" {
             textField.text = originalText
+            textField.defaultTextAttributes = originalTextAttribute!
+            textField.textAlignment = .center
         }
         
         textField.resignFirstResponder()
@@ -236,7 +236,10 @@ extension MemeMeViewController: UITextFieldDelegate {
         
     func textFieldDidBeginEditing(_ textField: UITextField) {
         originalText = textField.text
+        originalTextAttribute = textField.defaultTextAttributes
         textField.text = ""
+        textField.defaultTextAttributes = memeTextAttribute
+        textField.textAlignment = .center
     }
         
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
