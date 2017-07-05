@@ -47,7 +47,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="U4L-3w-dmT">
                                             <connections>
-                                                <action selector="reset:" destination="BYZ-38-t0r" id="hUj-pF-pnf"/>
+                                                <action selector="reset" destination="BYZ-38-t0r" id="Mv9-OK-cMB"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
