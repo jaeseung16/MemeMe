@@ -30,7 +30,9 @@ class MemeMeViewController: UIViewController {
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName: Float(-2.0)]
     
-    let memeTextFieldDelegate = MemeTextFieldDelegate()
+//    let memeTextFieldDelegate = MemeTextFieldDelegate()
+    
+    var originalText: String?
     
     // MARK: Methods
     
@@ -43,8 +45,8 @@ class MemeMeViewController: UIViewController {
         topTextField.textAlignment = .center
         bottomTextField.textAlignment = .center
         
-        self.topTextField.delegate = self.memeTextFieldDelegate
-        self.bottomTextField.delegate = self.memeTextFieldDelegate
+        self.topTextField.delegate = self
+        self.bottomTextField.delegate = self
         
         // Disable the textFields and activityButton at the beginning
         memeNotReady()
@@ -75,6 +77,7 @@ class MemeMeViewController: UIViewController {
         topTextField.isEnabled = true
         bottomTextField.isEnabled = true
         activityButton.isEnabled = true
+        
     }
     
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType) {
@@ -127,9 +130,8 @@ extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
-            memeReady()
             picker.dismiss(animated: true, completion: nil)
-
+            memeReady()
         }
 
     }
@@ -215,4 +217,57 @@ extension MemeMeViewController {
         
         return shiftedFrame
     }
+}
+
+
+// MARK: UITextFieldDelegate
+
+extension MemeMeViewController: UITextFieldDelegate {    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text == "" {
+            textField.text = originalText
+        }
+        
+        textField.resignFirstResponder()
+        
+        return true
+    }
+        
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        originalText = textField.text
+        textField.text = ""
+    }
+        
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard imagePickerView.image != nil else {
+            return true
+        }
+        
+        let size = imageSize()
+        
+        var newText = textField.text! as NSString
+        newText = newText.replacingCharacters(in: range, with: string) as NSString
+        textField.text = newText as String
+        
+        var textSize = newText.size(attributes: memeTextAttribute)
+
+        if textSize.width < 0.9 * size.width {
+            textField.invalidateIntrinsicContentSize()
+        } else {
+            var newTextAttribute = memeTextAttribute
+            var fontSize = ( newTextAttribute[NSFontAttributeName] as! UIFont ).pointSize
+            
+            while textSize.width > 0.9 * size.width {
+                fontSize -= 1
+                newTextAttribute[NSFontAttributeName] = UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize)!
+                textSize = newText.size(attributes: newTextAttribute)
+                textField.defaultTextAttributes = newTextAttribute
+            }
+        }
+        
+        return false
+    }
+    
 }
