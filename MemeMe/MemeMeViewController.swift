@@ -253,29 +253,33 @@ extension MemeMeViewController: UITextFieldDelegate {
             return true
         }
         
-        let size = imageSize()
+        let maxTextWidth = 0.9 * imageSize().width
         
         var newText = textField.text! as NSString
         newText = newText.replacingCharacters(in: range, with: string) as NSString
-        textField.text = newText as String
         
-        var textSize = newText.size(attributes: memeTextAttribute)
-
-        if textSize.width < 0.9 * size.width {
-            textField.invalidateIntrinsicContentSize()
+        var newTextAttributes = textField.defaultTextAttributes
+        var fontSize = ( newTextAttributes[NSFontAttributeName] as! UIFont ).pointSize
+        
+        var textSize = newText.size(attributes: newTextAttributes) // Estimate the size of newText
+        
+        if textSize.width < maxTextWidth {
+            return true  // Do nothing if newText fits within maxTextWidth
         } else {
-            var newTextAttribute = memeTextAttribute
-            var fontSize = ( newTextAttribute[NSFontAttributeName] as! UIFont ).pointSize
             
-            while textSize.width > 0.9 * size.width {
+            // Reduce the font size until newText fits within maxTextWidth
+            while textSize.width >= maxTextWidth {
                 fontSize -= 1
-                newTextAttribute[NSFontAttributeName] = UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize)!
-                textSize = newText.size(attributes: newTextAttribute)
-                textField.defaultTextAttributes = newTextAttribute
+                newTextAttributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize)!
+                textSize = newText.size(attributes: newTextAttributes)
             }
+            
+            textField.defaultTextAttributes = newTextAttributes
+            textField.text = newText as String
+            
+            return false
         }
-        
-        return false
     }
+
     
 }
