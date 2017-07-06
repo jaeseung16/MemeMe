@@ -157,8 +157,7 @@ extension MemeMeViewController {
 extension MemeMeViewController {
     func generateMemedImage() -> UIImage {
 
-        toolBar.isHidden = true
-        navigationBar.isHidden = true
+        turnBars(on: true)
         
         // Image size to capture
         let imageSizeForCapture = imageSize()
@@ -172,8 +171,7 @@ extension MemeMeViewController {
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        toolBar.isHidden = false
-        navigationBar.isHidden = false
+        turnBars(on: false)
         
         return memedImage
     }
@@ -196,6 +194,11 @@ extension MemeMeViewController {
         let shiftOrigin = CGPoint(x: xOrigin, y: yOrigin)
         
         return CGRect(origin: shiftOrigin, size: self.view.frame.size)
+    }
+    
+    func turnBars(on: Bool) {
+        toolBar.isHidden = on
+        navigationBar.isHidden = on
     }
 }
 
