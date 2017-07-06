@@ -88,6 +88,7 @@ class MemeMeViewController: UIViewController {
     
     func save() {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage!)
+        print("\(meme.topText)") // Dummy code to avoid a warning message
     }
 
     // MARK: Actions
@@ -106,9 +107,9 @@ class MemeMeViewController: UIViewController {
     }
     
     @IBAction func presentActivityController() {
-        let memedImage = generateMemedImage()
+        memedImage = generateMemedImage()
         
-        let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        let activityController = UIActivityViewController(activityItems: [memedImage!], applicationActivities: nil)
         
         activityController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
             guard completed else { return }
