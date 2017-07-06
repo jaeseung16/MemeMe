@@ -60,18 +60,21 @@ class MemeMeViewController: UIViewController {
         topTextField.isEnabled = false
         bottomTextField.isEnabled = false
         activityButton.isEnabled = false
-        
-        topTextField.defaultTextAttributes = memeTextAttribute
-        bottomTextField.defaultTextAttributes = memeTextAttribute
-        
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
+
+        configure(textField: topTextField, withString: "TOP", withAttribute: memeTextAttribute)
+        configure(textField: bottomTextField, withString: "BOTTOM", withAttribute: memeTextAttribute)
     }
     
     func memeReady() {
         topTextField.isEnabled = true
         bottomTextField.isEnabled = true
         activityButton.isEnabled = true
+    }
+    
+    func configure(textField: UITextField, withString text: String, withAttribute textAttribute: [String: Any]) {
+        textField.text = text
+        textField.defaultTextAttributes = textAttribute
+        textField.textAlignment = .center
     }
     
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType) {
@@ -92,8 +95,6 @@ class MemeMeViewController: UIViewController {
     }
     
     @IBAction func reset() {
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
         imagePickerView.image = nil
         
         memeNotReady()

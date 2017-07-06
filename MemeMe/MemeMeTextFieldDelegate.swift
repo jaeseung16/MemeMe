@@ -13,9 +13,7 @@ extension MemeMeViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text == "" {
-            textField.text = originalText
-            textField.defaultTextAttributes = originalTextAttribute!
-            textField.textAlignment = .center
+                configure(textField: textField, withString: originalText!, withAttribute: originalTextAttribute!)
         }
         
         textField.resignFirstResponder()
@@ -26,9 +24,7 @@ extension MemeMeViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         originalText = textField.text
         originalTextAttribute = textField.defaultTextAttributes
-        textField.text = ""
-        textField.defaultTextAttributes = memeTextAttribute
-        textField.textAlignment = .center
+        configure(textField: textField, withString: "", withAttribute: memeTextAttribute)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -64,8 +60,7 @@ extension MemeMeViewController: UITextFieldDelegate {
             }
             
             // Update textField
-            textField.defaultTextAttributes = newTextAttributes
-            textField.text = newText as String
+            configure(textField: textField, withString: newText as String, withAttribute: newTextAttributes)
             
             return false
         }
