@@ -113,7 +113,7 @@ class MemeMeViewController: UIViewController {
         activityController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
             guard completed else { return }
             self.save()
-            self.memeNotReady()
+            self.reset()
         }
         
         present(activityController, animated: true, completion: nil)
