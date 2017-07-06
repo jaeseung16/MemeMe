@@ -105,9 +105,7 @@ class MemeMeViewController: UIViewController {
         let activityController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
         
         activityController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
-            guard completed else {
-                return
-            }
+            guard completed else { return }
             UIImageWriteToSavedPhotosAlbum(meme.memedImage, nil, nil, nil)
             self.reset()
         }
