@@ -29,6 +29,7 @@ class MemeMeViewController: UIViewController {
         NSStrokeWidthAttributeName: Float(-2.0)]
     var originalText: String?
     var originalTextAttribute: [String: Any]?
+    var memedImage: UIImage?
     
     // MARK: Methods
     override func viewDidLoad() {
@@ -84,6 +85,10 @@ class MemeMeViewController: UIViewController {
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    func save() {
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage!)
+    }
 
     // MARK: Actions
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
@@ -101,14 +106,14 @@ class MemeMeViewController: UIViewController {
     }
     
     @IBAction func presentActivityController() {
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        let memedImage = generateMemedImage()
         
-        let activityController = UIActivityViewController(activityItems: [meme.memedImage], applicationActivities: nil)
+        let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         
         activityController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
             guard completed else { return }
-            UIImageWriteToSavedPhotosAlbum(meme.memedImage, nil, nil, nil)
-            self.reset()
+            self.save()
+            self.memeNotReady()
         }
         
         present(activityController, animated: true, completion: nil)
