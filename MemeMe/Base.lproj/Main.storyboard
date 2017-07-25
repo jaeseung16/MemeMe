@@ -13,7 +13,7 @@
         <!--Sent Memes-->
         <scene sceneID="ZsX-hU-PNt">
             <objects>
-                <tableViewController id="b4e-E4-DkC" sceneMemberID="viewController">
+                <tableViewController id="b4e-E4-DkC" customClass="SentMemesTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zq6-XF-YFX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,6 +250,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0Qr-c0-DCW"/>
+        <segue reference="ot2-wg-wrq"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2934551F280F0700B6D7D3 /* SentMemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2934541F280F0700B6D7D3 /* SentMemesTableViewController.swift */; };
 		0B6B51A61F05BA2A00720A8A /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6B51A51F05BA2A00720A8A /* Meme.swift */; };
 		0B968F411F0036D8005E3A3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B968F401F0036D8005E3A3A /* AppDelegate.swift */; };
 		0B968F431F0036D8005E3A3A /* MemeMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B968F421F0036D8005E3A3A /* MemeMeViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B2934541F280F0700B6D7D3 /* SentMemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewController.swift; sourceTree = "<group>"; };
 		0B6B51A51F05BA2A00720A8A /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		0B968F3D1F0036D8005E3A3A /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B968F401F0036D8005E3A3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				0B968F401F0036D8005E3A3A /* AppDelegate.swift */,
 				0B968F421F0036D8005E3A3A /* MemeMeViewController.swift */,
+				0B2934541F280F0700B6D7D3 /* SentMemesTableViewController.swift */,
 				0B9B01331F0EED180094E466 /* MemeMeTextFieldDelegate.swift */,
 				0B968F441F0036D8005E3A3A /* Main.storyboard */,
 				0B6B51A51F05BA2A00720A8A /* Meme.swift */,
@@ -146,6 +149,7 @@
 				0B968F431F0036D8005E3A3A /* MemeMeViewController.swift in Sources */,
 				0B6B51A61F05BA2A00720A8A /* Meme.swift in Sources */,
 				0B9B01341F0EED180094E466 /* MemeMeTextFieldDelegate.swift in Sources */,
+				0B2934551F280F0700B6D7D3 /* SentMemesTableViewController.swift in Sources */,
 				0B968F411F0036D8005E3A3A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
