@@ -107,6 +107,7 @@ class MemeMeViewController: UIViewController {
         imagePickerView.image = nil
         
         memeNotReady()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func presentActivityController() {
