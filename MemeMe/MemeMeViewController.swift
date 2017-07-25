@@ -88,7 +88,10 @@ class MemeMeViewController: UIViewController {
     
     func save() {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage!)
-        print("\(meme.topText)") // Dummy code to avoid a warning message
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
 
     // MARK: Actions
