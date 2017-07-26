@@ -21,7 +21,6 @@ class SentMemesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        print("\(self.memes)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,12 +42,12 @@ class SentMemesTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-/*
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-*/
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.memes.count
@@ -61,7 +60,7 @@ class SentMemesTableViewController: UITableViewController {
         
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
-        cell.textLabel?.text = meme.topText
+        cell.textLabel?.text = meme.topText + "…" + meme.bottomText
         cell.imageView?.image = meme.memedImage
         
         print("\(self.memes[indexPath.row].bottomText)")
