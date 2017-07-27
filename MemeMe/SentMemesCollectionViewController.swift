@@ -78,10 +78,11 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
-        // self.flowLayout.invalidateLayout()
-        adjustFlowLayoutSize(size: size)
-        
+
+        if flowLayout != nil {
+            self.flowLayout.invalidateLayout()
+            adjustFlowLayoutSize(size: size)
+        }
     }
     
     func adjustFlowLayoutSize(size: CGSize) {
@@ -92,8 +93,6 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
         let numberInRow = height > width ? CGFloat(3.0) : CGFloat(5.0)
         
         let dimension = ( width - 2.0 * space ) / numberInRow
-        
-        print("\(dimension)")
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
