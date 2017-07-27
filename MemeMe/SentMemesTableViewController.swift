@@ -35,9 +35,7 @@ class SentMemesTableViewController: UITableViewController {
         let appDelegate = object as! AppDelegate
         self.memes = appDelegate.memes
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
         
     }
 
@@ -55,15 +53,11 @@ class SentMemesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SentMemesTableViewCell", for: indexPath)
-
-        print("\(indexPath)")
         
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
         cell.textLabel?.text = meme.topText + "…" + meme.bottomText
         cell.imageView?.image = meme.memedImage
-        
-        print("\(self.memes[indexPath.row].bottomText)")
 
         return cell
     }
@@ -72,6 +66,12 @@ class SentMemesTableViewController: UITableViewController {
         return 100.0
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        
+        detailViewController.meme = self.memes[(indexPath as NSIndexPath).row]
+        self.navigationController!.pushViewController(detailViewController, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
