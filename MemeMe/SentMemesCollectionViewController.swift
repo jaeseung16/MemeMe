@@ -20,6 +20,8 @@ class SentMemesCollectionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,10 +36,9 @@ class SentMemesCollectionViewController: UIViewController {
         let appDelegate = object as! AppDelegate
         self.memes = appDelegate.memes
         
-        print("\(self.memes.count)")
-        
         self.collectionView.reloadData()
         
+        adjustFlowLayoutSize(size: self.view.frame.size)
     }
 
     /*
@@ -73,5 +74,29 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
         cell.imageView?.image = meme.memedImage
         
         return cell
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        // self.flowLayout.invalidateLayout()
+        adjustFlowLayoutSize(size: size)
+        
+    }
+    
+    func adjustFlowLayoutSize(size: CGSize) {
+        let space:CGFloat = 3.0
+        
+        let height = size.height
+        let width = size.width
+        let numberInRow = height > width ? CGFloat(3.0) : CGFloat(5.0)
+        
+        let dimension = ( width - 2.0 * space ) / numberInRow
+        
+        print("\(dimension)")
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
 }

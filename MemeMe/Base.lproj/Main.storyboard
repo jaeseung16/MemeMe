@@ -64,18 +64,18 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ub4-eW-4BU" kind="relationship" relationship="viewControllers" id="dow-uU-DKI"/>
-                        <segue destination="McM-mV-K7p" kind="relationship" relationship="viewControllers" id="UY0-Cb-Hdg"/>
+                        <segue destination="ub4-eW-4BU" kind="relationship" relationship="viewControllers" id="WN5-ZH-e9O"/>
+                        <segue destination="McM-mV-K7p" kind="relationship" relationship="viewControllers" id="KWJ-Fv-lHX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yO3-hs-33X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2335" y="77"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--TableNavigationController-->
         <scene sceneID="ge0-eM-bcv">
             <objects>
-                <navigationController id="ub4-eW-4BU" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TableNavigationController" title="TableNavigationController" id="ub4-eW-4BU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="table" id="4EP-0w-hJ2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2FQ-ZO-thi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="-1415" y="-383"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--CollectionNavigationController-->
         <scene sceneID="leE-mQ-GMP">
             <objects>
-                <navigationController id="McM-mV-K7p" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CollectionNavigationController" title="CollectionNavigationController" id="McM-mV-K7p" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="collection" id="tUO-Gi-3TR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WXp-j9-5NS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -118,9 +118,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Lc-XW-IBh">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Lc-XW-IBh">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dwj-Gb-vNV">
                                     <size key="itemSize" width="150" height="150"/>
@@ -137,15 +136,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ijc-ZQ-31h">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                    <rect key="frame" x="5" y="5" width="140" height="140"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="ijc-ZQ-31h" secondAttribute="trailing" id="0gU-GY-J0r"/>
-                                            <constraint firstItem="ijc-ZQ-31h" firstAttribute="leading" secondItem="xh9-nu-5zg" secondAttribute="leading" id="KAW-BP-p4x"/>
-                                            <constraint firstItem="ijc-ZQ-31h" firstAttribute="top" secondItem="xh9-nu-5zg" secondAttribute="top" id="Mi9-ye-LKU"/>
-                                            <constraint firstAttribute="bottom" secondItem="ijc-ZQ-31h" secondAttribute="bottom" id="wQf-NM-9NJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="ijc-ZQ-31h" secondAttribute="trailing" constant="5" id="0gU-GY-J0r"/>
+                                            <constraint firstItem="ijc-ZQ-31h" firstAttribute="leading" secondItem="xh9-nu-5zg" secondAttribute="leading" constant="5" id="KAW-BP-p4x"/>
+                                            <constraint firstItem="ijc-ZQ-31h" firstAttribute="top" secondItem="xh9-nu-5zg" secondAttribute="top" constant="5" id="Mi9-ye-LKU"/>
+                                            <constraint firstAttribute="bottom" secondItem="ijc-ZQ-31h" secondAttribute="bottom" constant="5" id="wQf-NM-9NJ"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="ijc-ZQ-31h" id="dcC-hS-eNo"/>
@@ -159,6 +158,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cf7-Jf-suj" firstAttribute="top" secondItem="3Lc-XW-IBh" secondAttribute="bottom" id="YqB-GN-4a8"/>
+                            <constraint firstAttribute="trailing" secondItem="3Lc-XW-IBh" secondAttribute="trailing" id="jJS-C5-S1n"/>
+                            <constraint firstItem="3Lc-XW-IBh" firstAttribute="leading" secondItem="o4N-vP-bxd" secondAttribute="leading" id="koO-ac-MgG"/>
+                            <constraint firstItem="3Lc-XW-IBh" firstAttribute="top" secondItem="dhr-AN-86a" secondAttribute="bottom" id="ung-eK-bMy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sent Memes" id="5qc-LV-eLv">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Njf-kI-Dq3">
