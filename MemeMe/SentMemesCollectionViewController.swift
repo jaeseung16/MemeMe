@@ -10,46 +10,40 @@ import UIKit
 
 class SentMemesCollectionViewController: UIViewController {
     
+    // MARK: Properties
+    
     var memes = [Meme]()
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    let memeTextAttribute: [String: Any] = [
+        NSStrokeColorAttributeName: UIColor.black,
+        NSForegroundColorAttributeName: UIColor.white,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
+        NSStrokeWidthAttributeName: Float(-2.0)]
     
+    // MARK: Outlets
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        self.memes = appDelegate.memes
+        self.memes = loadSentMemes()
         
         self.collectionView.reloadData()
         
         adjustFlowLayoutSize(size: self.view.frame.size)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func loadSentMemes() -> [Meme] {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
     }
-    */
 
 }
 
@@ -63,6 +57,7 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
         let detailViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         
         detailViewController.meme = self.memes[(indexPath as NSIndexPath).row]
+        
         self.navigationController!.pushViewController(detailViewController, animated: true)
     }
     
@@ -71,9 +66,20 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
         
         let meme = self.memes[(indexPath as NSIndexPath).row]
 
-        cell.imageView?.image = meme.memedImage
+        cell.imageView?.image = meme.originalImage
+        
+        configure(textField: cell.topTextField, withString: meme.topText, withAttribute: memeTextAttribute)
+        configure(textField: cell.bottomTextField, withString: meme.bottomText, withAttribute: memeTextAttribute)
         
         return cell
+    }
+    
+    func configure(textField: UITextField, withString text: String, withAttribute textAttribute: [String: Any]) {
+        textField.text = text
+        textField.defaultTextAttributes = textAttribute
+        textField.textAlignment = .center
+        
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
