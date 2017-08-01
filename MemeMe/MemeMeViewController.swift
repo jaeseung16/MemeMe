@@ -106,7 +106,6 @@ class MemeMeViewController: UIViewController {
     @IBAction func reset() {
         imagePickerView.image = nil
         
-        memeNotReady()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -118,6 +117,7 @@ class MemeMeViewController: UIViewController {
         activityController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
             guard completed else { return }
             self.save()
+            self.memeNotReady()
             self.reset()
         }
         

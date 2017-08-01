@@ -14,11 +14,13 @@ class SentMemesCollectionViewController: UIViewController {
     
     var memes = [Meme]()
     
-    let memeTextAttribute: [String: Any] = [
+    let memeTextAttributes: [String: Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
         NSStrokeWidthAttributeName: Float(-2.0)]
+    
+    let space: CGFloat = 3.0
     
     // MARK: Outlets
     
@@ -67,18 +69,30 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
         let meme = self.memes[(indexPath as NSIndexPath).row]
 
         cell.imageView?.image = meme.originalImage
-        
-        configure(textField: cell.topTextField, withString: meme.topText, withAttribute: memeTextAttribute)
-        configure(textField: cell.bottomTextField, withString: meme.bottomText, withAttribute: memeTextAttribute)
+        configure(textField: cell.topTextField, withString: meme.topText, withAttribute: memeTextAttributes)
+        configure(textField: cell.bottomTextField, withString: meme.bottomText, withAttribute: memeTextAttributes)
         
         return cell
     }
     
-    func configure(textField: UITextField, withString text: String, withAttribute textAttribute: [String: Any]) {
-        textField.text = text
-        textField.defaultTextAttributes = textAttribute
-        textField.textAlignment = .center
+    func configure(textField: UITextField, withString text: String, withAttribute textAttributes: [String: Any]) {
         
+        var newTextAttributes = textAttributes
+        var fontSize = ( newTextAttributes[NSFontAttributeName] as! UIFont ).pointSize
+        
+        var textSize = text.size(attributes: newTextAttributes)
+        
+        let maxTextWidth = 0.95 * cellSize(size: self.view.frame.size, space: self.space)
+
+        while textSize.width >= maxTextWidth {
+            fontSize -= 1
+            newTextAttributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize)!
+            textSize = text.size(attributes: newTextAttributes)
+        }
+        
+        textField.text = text
+        textField.defaultTextAttributes = newTextAttributes
+        textField.textAlignment = .center
         
     }
     
@@ -92,16 +106,22 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
     }
     
     func adjustFlowLayoutSize(size: CGSize) {
-        let space:CGFloat = 3.0
         
-        let height = size.height
-        let width = size.width
-        let numberInRow = height > width ? CGFloat(3.0) : CGFloat(5.0)
-        
-        let dimension = ( width - 2.0 * space ) / numberInRow
+        let dimension = cellSize(size: size, space: self.space)
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+
+    }
+    
+    func cellSize(size: CGSize, space: CGFloat) -> CGFloat {
+        
+        let height = size.height
+        let width = size.width
+        
+        let numberInRow = height > width ? CGFloat(3.0) : CGFloat(5.0)
+        
+        return ( width - 2.0 * space ) / numberInRow
     }
 }

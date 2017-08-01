@@ -12,6 +12,12 @@ class SentMemesTableViewController: UITableViewController {
     
     var memes = [Meme]()
     
+    let memeTextAttributes: [String: Any] = [
+        NSStrokeColorAttributeName: UIColor.black,
+        NSForegroundColorAttributeName: UIColor.white,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)!,
+        NSStrokeWidthAttributeName: Float(-2.0)]
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -37,18 +43,22 @@ class SentMemesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SentMemesTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SentMemeTableViewCell", for: indexPath) as! SentMemeTableViewCell
         
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
-        cell.textLabel?.text = meme.topText + "…" + meme.bottomText
-        cell.imageView?.image = meme.memedImage
+        configure(label: cell.topLabel, withString: meme.topText, withAttribute: memeTextAttributes)
+        configure(label: cell.bottomLabel, withString: meme.bottomText, withAttribute: memeTextAttributes)
+        
+        cell.topBottomLabel.text = meme.topText + "..." + meme.bottomText
+        
+        cell.memeImageView.image = meme.memedImage
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return 150.0
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -57,6 +67,14 @@ class SentMemesTableViewController: UITableViewController {
         detailViewController.meme = self.memes[(indexPath as NSIndexPath).row]
         
         self.navigationController!.pushViewController(detailViewController, animated: true)
+    }
+    
+    func configure(label: UILabel, withString text: String, withAttribute textAttributes: [String: Any]) {
+        
+        label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingMiddle
+        
     }
 
 }
