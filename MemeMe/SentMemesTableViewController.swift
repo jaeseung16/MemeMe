@@ -52,7 +52,7 @@ class SentMemesTableViewController: UITableViewController {
         
         cell.topBottomLabel.text = meme.topText + "..." + meme.bottomText
         
-        cell.memeImageView.image = meme.memedImage
+        cell.memeImageView.image = meme.originalImage
 
         return cell
     }
@@ -70,11 +70,9 @@ class SentMemesTableViewController: UITableViewController {
     }
     
     func configure(label: UILabel, withString text: String, withAttribute textAttributes: [String: Any]) {
-        
         label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingMiddle
-        
     }
 
 }

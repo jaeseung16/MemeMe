@@ -17,7 +17,7 @@ class SentMemesCollectionViewController: UIViewController {
     let memeTextAttributes: [String: Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)!,
         NSStrokeWidthAttributeName: Float(-2.0)]
     
     let space: CGFloat = 3.0
@@ -69,31 +69,16 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
         let meme = self.memes[(indexPath as NSIndexPath).row]
 
         cell.imageView?.image = meme.originalImage
-        configure(textField: cell.topTextField, withString: meme.topText, withAttribute: memeTextAttributes)
-        configure(textField: cell.bottomTextField, withString: meme.bottomText, withAttribute: memeTextAttributes)
+        configure(label: cell.topLabel, withString: meme.topText, withAttribute: memeTextAttributes)
+        configure(label: cell.bottomLabel, withString: meme.bottomText, withAttribute: memeTextAttributes)
         
         return cell
     }
     
-    func configure(textField: UITextField, withString text: String, withAttribute textAttributes: [String: Any]) {
-        
-        var newTextAttributes = textAttributes
-        var fontSize = ( newTextAttributes[NSFontAttributeName] as! UIFont ).pointSize
-        
-        var textSize = text.size(attributes: newTextAttributes)
-        
-        let maxTextWidth = 0.95 * cellSize(size: self.view.frame.size, space: self.space)
-
-        while textSize.width >= maxTextWidth {
-            fontSize -= 1
-            newTextAttributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize)!
-            textSize = text.size(attributes: newTextAttributes)
-        }
-        
-        textField.text = text
-        textField.defaultTextAttributes = newTextAttributes
-        textField.textAlignment = .center
-        
+    func configure(label: UILabel, withString text: String, withAttribute textAttributes: [String: Any]) {
+        label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingMiddle
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -106,17 +91,14 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
     }
     
     func adjustFlowLayoutSize(size: CGSize) {
-        
         let dimension = cellSize(size: size, space: self.space)
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-
     }
     
     func cellSize(size: CGSize, space: CGFloat) -> CGFloat {
-        
         let height = size.height
         let width = size.width
         

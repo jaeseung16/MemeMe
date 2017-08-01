@@ -160,58 +160,55 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dwj-Gb-vNV">
-                                    <size key="itemSize" width="250" height="250"/>
+                                    <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SentMemesCollectionViewCell" reuseIdentifier="SentMemesCollectionViewCell" id="xh9-nu-5zg" customClass="SentMemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
-                                        <rect key="frame" x="62.5" y="0.0" width="250" height="250"/>
+                                        <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ijc-ZQ-31h">
-                                                    <rect key="frame" x="-0.5" y="0.0" width="250" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Guo-OO-oed">
-                                                    <rect key="frame" x="20" y="11" width="210" height="17"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96R-bA-zLO">
+                                                    <rect key="frame" x="10" y="9" width="180" height="24"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="210" id="rXF-qx-YX1"/>
+                                                        <constraint firstAttribute="width" constant="180" id="Amv-Vu-yss"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="3ui-mL-8t2">
-                                                    <rect key="frame" x="20" y="222" width="211" height="17"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="211" id="OgB-d7-5aj"/>
-                                                    </constraints>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOTTOM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNO-Te-7tO">
+                                                    <rect key="frame" x="10" y="163" width="180" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ijc-ZQ-31h" secondAttribute="trailing" id="0gU-GY-J0r"/>
-                                            <constraint firstItem="3ui-mL-8t2" firstAttribute="centerX" secondItem="xh9-nu-5zg" secondAttribute="centerX" id="3hA-1I-kJa"/>
-                                            <constraint firstItem="Guo-OO-oed" firstAttribute="centerX" secondItem="xh9-nu-5zg" secondAttribute="centerX" id="GKB-ht-oUu"/>
+                                            <constraint firstItem="oNO-Te-7tO" firstAttribute="leading" secondItem="xh9-nu-5zg" secondAttribute="leadingMargin" constant="2" id="172-iX-ib6"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="oNO-Te-7tO" secondAttribute="bottom" constant="5" id="40z-qX-koU"/>
+                                            <constraint firstItem="oNO-Te-7tO" firstAttribute="width" secondItem="96R-bA-zLO" secondAttribute="width" id="4bN-XK-CJW"/>
+                                            <constraint firstItem="96R-bA-zLO" firstAttribute="top" secondItem="xh9-nu-5zg" secondAttribute="topMargin" constant="1" id="HnW-35-jzR"/>
                                             <constraint firstItem="ijc-ZQ-31h" firstAttribute="leading" secondItem="xh9-nu-5zg" secondAttribute="leading" id="KAW-BP-p4x"/>
                                             <constraint firstItem="ijc-ZQ-31h" firstAttribute="top" secondItem="xh9-nu-5zg" secondAttribute="top" id="Mi9-ye-LKU"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="3ui-mL-8t2" secondAttribute="bottom" constant="3" id="k9N-iu-kzc"/>
-                                            <constraint firstItem="Guo-OO-oed" firstAttribute="top" secondItem="xh9-nu-5zg" secondAttribute="topMargin" constant="3" id="pY6-Yd-DzD"/>
+                                            <constraint firstItem="96R-bA-zLO" firstAttribute="leading" secondItem="xh9-nu-5zg" secondAttribute="leadingMargin" constant="2" id="OrL-TV-ses"/>
+                                            <constraint firstItem="96R-bA-zLO" firstAttribute="centerX" secondItem="xh9-nu-5zg" secondAttribute="centerX" id="sOu-03-1Nw"/>
                                             <constraint firstAttribute="bottom" secondItem="ijc-ZQ-31h" secondAttribute="bottom" id="wQf-NM-9NJ"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="bottomTextField" destination="3ui-mL-8t2" id="HAF-PE-Oty"/>
+                                            <outlet property="bottomLabel" destination="oNO-Te-7tO" id="3TT-6k-Lgf"/>
                                             <outlet property="imageView" destination="ijc-ZQ-31h" id="dcC-hS-eNo"/>
-                                            <outlet property="topTextField" destination="Guo-OO-oed" id="oR8-ib-lcv"/>
+                                            <outlet property="topLabel" destination="96R-bA-zLO" id="zaI-Re-RVv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -386,6 +383,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ot2-wg-wrq"/>
+        <segue reference="0Qr-c0-DCW"/>
     </inferredMetricsTieBreakers>
 </document>
