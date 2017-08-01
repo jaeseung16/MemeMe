@@ -11,7 +11,6 @@ import UIKit
 class SentMemesCollectionViewController: UIViewController {
     
     // MARK: Properties
-    
     var memes = [Meme]()
     
     let memeTextAttributes: [String: Any] = [
@@ -23,10 +22,10 @@ class SentMemesCollectionViewController: UIViewController {
     let space: CGFloat = 3.0
     
     // MARK: Outlets
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    // MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -49,18 +48,12 @@ class SentMemesCollectionViewController: UIViewController {
 
 }
 
+// MARK: CollectionView Deleagte & DataSource
+
 extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
-        
-        detailViewController.meme = self.memes[(indexPath as NSIndexPath).row]
-        
-        self.navigationController!.pushViewController(detailViewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -75,6 +68,14 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        
+        detailViewController.meme = self.memes[(indexPath as NSIndexPath).row]
+        
+        self.navigationController!.pushViewController(detailViewController, animated: true)
+    }
+    
     func configure(label: UILabel, withString text: String, withAttribute textAttributes: [String: Any]) {
         label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
         label.textAlignment = .center
@@ -84,7 +85,9 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
-        if flowLayout != nil {
+        // This method is called when the orientaition of a device changes even before the view controller is loaded.
+        // So checking whether flowLayout exists before updating the collection view
+        if self.flowLayout != nil {
             self.flowLayout.invalidateLayout()
             adjustFlowLayoutSize(size: size)
         }
@@ -93,9 +96,9 @@ extension SentMemesCollectionViewController: UICollectionViewDelegate, UICollect
     func adjustFlowLayoutSize(size: CGSize) {
         let dimension = cellSize(size: size, space: self.space)
         
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        self.flowLayout.minimumInteritemSpacing = self.space
+        self.flowLayout.minimumLineSpacing = self.space
+        self.flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
     
     func cellSize(size: CGSize, space: CGFloat) -> CGFloat {

@@ -10,6 +10,7 @@ import UIKit
 
 class SentMemeCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Properites
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var bottomLabel: UILabel!

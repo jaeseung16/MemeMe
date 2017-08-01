@@ -9,27 +9,11 @@
 import UIKit
 
 class SentMemeTableViewCell: UITableViewCell {
-    
-    let memeTextAttributes: [String: Any] = [
-        NSStrokeColorAttributeName: UIColor.black,
-        NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
-        NSStrokeWidthAttributeName: Float(-2.0)]
-    
+
+    // MARK: Outlets
     @IBOutlet weak var memeImageView: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var bottomLabel: UILabel!
     @IBOutlet weak var topBottomLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

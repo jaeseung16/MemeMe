@@ -10,6 +10,7 @@ import UIKit
 
 class SentMemesTableViewController: UITableViewController {
     
+    // MARK: Properties
     var memes = [Meme]()
     
     let memeTextAttributes: [String: Any] = [
@@ -18,11 +19,11 @@ class SentMemesTableViewController: UITableViewController {
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)!,
         NSStrokeWidthAttributeName: Float(-2.0)]
     
+    // MARK: Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.memes = loadSentMemes()
-        
         self.tableView.reloadData()
     }
     
@@ -31,13 +32,18 @@ class SentMemesTableViewController: UITableViewController {
         let appDelegate = object as! AppDelegate
         return appDelegate.memes
     }
+    
+    func configure(label: UILabel, withString text: String, withAttribute textAttributes: [String: Any]) {
+        label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingMiddle
+    }
 
-    // MARK: - Table view data source
-
+    // MARK: - TableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.memes.count
     }
@@ -56,23 +62,18 @@ class SentMemesTableViewController: UITableViewController {
 
         return cell
     }
-
+    
+    // MARK: TableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120.0
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         
         detailViewController.meme = self.memes[(indexPath as NSIndexPath).row]
         
         self.navigationController!.pushViewController(detailViewController, animated: true)
-    }
-    
-    func configure(label: UILabel, withString text: String, withAttribute textAttributes: [String: Any]) {
-        label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
-        label.textAlignment = .center
-        label.lineBreakMode = .byTruncatingMiddle
     }
 
 }

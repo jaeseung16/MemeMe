@@ -27,6 +27,7 @@ class MemeMeViewController: UIViewController {
         NSForegroundColorAttributeName: UIColor.white,
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName: Float(-2.0)]
+    
     var originalText: String?
     var originalTextAttribute: [String: Any]?
     var memedImage: UIImage?
@@ -40,7 +41,6 @@ class MemeMeViewController: UIViewController {
         
         // Disable the textFields and activityButton at the beginning
         memeNotReady()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -122,7 +122,6 @@ class MemeMeViewController: UIViewController {
         }
         
         present(activityController, animated: true, completion: nil)
-        
     }
 
 }
@@ -165,7 +164,6 @@ extension MemeMeViewController {
 // MARK: Memthods for a memed image
 extension MemeMeViewController {
     func generateMemedImage() -> UIImage {
-
         turnBars(on: true)
         
         // Image size to capture

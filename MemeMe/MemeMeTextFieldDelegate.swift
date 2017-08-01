@@ -13,7 +13,7 @@ extension MemeMeViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text == "" {
-                configure(textField: textField, withString: originalText!, withAttribute: originalTextAttribute!)
+            configure(textField: textField, withString: originalText!, withAttribute: originalTextAttribute!)
         }
         
         textField.resignFirstResponder()
@@ -24,14 +24,13 @@ extension MemeMeViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         originalText = textField.text
         originalTextAttribute = textField.defaultTextAttributes
+        
         configure(textField: textField, withString: "", withAttribute: memeTextAttribute)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        guard imagePickerView.image != nil else {
-            return false
-        }
+        guard imagePickerView.image != nil else { return false }
         
         // Estimate the size of newText
         var newText = textField.text! as NSString
@@ -46,20 +45,16 @@ extension MemeMeViewController: UITextFieldDelegate {
         let maxTextWidth = 0.9 * imageSize().width
         
         if textSize.width < maxTextWidth {
-            
             // Do nothing if newText fits within the maximum width
             return true
-            
         } else {
-            
             // Reduce the font size until newText fits within the maximum width
             while textSize.width >= maxTextWidth {
                 fontSize -= 1
                 newTextAttributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize)!
                 textSize = newText.size(attributes: newTextAttributes)
             }
-            
-            // Update textField
+
             configure(textField: textField, withString: newText as String, withAttribute: newTextAttributes)
             
             return false
