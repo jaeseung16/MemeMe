@@ -13,6 +13,7 @@ After adding text to an image chosen from the Photo Album or Camera, the user ca
 - Sent memes may be viewed as a table or a collection.
 - A new meme can be made by clicking the '+' button.
 - When a sent meme is selected, its image will be displayed.
+- Sent memes may not be saved.
 
 ## MemeMe
 
